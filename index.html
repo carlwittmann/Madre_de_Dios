@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Your Title Here</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
+    <style>
+        		.banner {
+			width: 100%;
+			height: 400px;
+			background-size: cover;
+			background-position: center center;
+			background-repeat: no-repeat;
+		}
+        
+		#mapid {
+			height: 500px;
+            width: 800px;
+		}
+	</style>
+</head>
+
+<body>
+    <div class="banner" style="background-image: url('tambopata.jpg');"></div>
+
+	<header>
+		<h1>Illegal Gold Mines in Madre de Dios, Peru</h1>
+		<p>Exploring the intersection between Remote Sensing, Organized Crime, and Illegal Resource Extraction</p>
+	</header>
+
+	<main>
+		<section>
+			<h2>Leaflet Map</h2>
+			<div id="mapid"></div>
+			<p>Caption for Leaflet map goes here</p>
+            <script>
+                var mymap = L.map('mapid').setView([-12.91021, -69.97064], 6);
+                L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                    attribution: 'Map data &copy; <a href="https://www.esri.com/">ESRI</a>',
+                    maxZoom: 18
+                }).addTo(mymap);
+
+        function preload() {
+        roi = loadJSON('roi.geojson');
+      }
+      
+      // Draw the ROI geojson on the map
+      function draw() {
+        L.geoJSON(roi).addTo(mymap);
+        noLoop(); // only draw once
+      }
+            </script>
+		</section>
+
+		<section>
+			<h2>Static Image</h2>
+			<img src="https://github.com/carlwittmann/carlwittmann.github.io/blob/master/images/madre_de_dios/aoi/L7_RGB.png" alt="Description of your image">
+			<p>Caption for your static image goes here.</p>
+		</section>
+
+		<section>
+			<h2>Animated GIF</h2>
+			<img src="your-gif.gif" alt="Description of your GIF">
+			<p>Caption for your animated GIF goes here.</p>
+		</section>
+
+		<section>
+			<h2>Before/After Image Pair #1</h2>
+			<div class="before-after">
+				<img src="before-image.jpg" alt="Before image">
+				<img src="after-image.jpg" alt="After image">
+			</div>
+			<p>Caption for your before/after image pair goes here.</p>
+		</section>
+
+		<section>
+			<h2>Before/After Image Pair #2</h2>
+			<div class="before-after">
+				<img src="before-image.jpg" alt="Before image">
+				<img src="after-image.jpg" alt="After image">
+			</div>
+			<p>Caption for your before/after image pair goes here.</p>
+		</section>
+
+	</main>
+
+	<footer>
+		<p>Your footer content here.</p>
+	</footer>
+
+</body>
+
+</html>
